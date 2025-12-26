@@ -9,6 +9,7 @@ import { toast } from 'react-toastify'
 
 import { logos } from '@/constants/themes'
 import useUserStore from '@/stores/useUserStore'
+import MobileNavButton from './MobileNavButton'
 
 export default function LandingPageNavbar() {
     const router = useRouter()
@@ -88,6 +89,16 @@ export default function LandingPageNavbar() {
                             className="w-[80px] sm:w-[80px] mt-[20px]"
                         />
                     </button>
+
+                    {/* Show only on medium screens and up */}
+                    <div className="hidden laptop:flex space-x-6 font-medium text-tertiary">
+                        <Link href="/marketplace">Marketplace</Link>
+                        <Link href="/community">Community</Link>
+                    </div>
+
+                    <div className="flex laptop:hidden">
+                        <MobileNavButton />
+                    </div>
                 </div>
 
                 <div className="relative">

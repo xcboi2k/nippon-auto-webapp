@@ -1,23 +1,38 @@
 import React from 'react'
+import { useRouter } from 'nextjs-toploader/app'
 
 export default function HeroSection() {
+    const router = useRouter()
     return (
-        <div className="w-full py-10 px-6">
-            <div className="w-full flex flex-col justify-center items-center rounded-md bg-white p-6">
-                <p className="font-bold text-gray-700 text-[30px] md:text-[50px] mb-[20px]">
-                    Welcome to NipponAuto
-                </p>
-                {/* <p className="w-[70%] text-gray-800 text-[15px] md:text-[20px] mb-[40px] leading">
-                    BetterCrew is a modern coworking space designed for
-                    freelancers, remote teams, creatives, and entrepreneurs who
-                    want more than just a desk. We offer flexible workstations,
-                    private rooms, and virtual services tailored to help you
-                    stay focused, connected, and productive. Whether you're here
-                    for a few hours or every day of the month, we make it easy
-                    to work your way—with reliable Wi-Fi, a professional
-                    atmosphere, and an up-and-coming community of doers.
-                </p> */}
-            </div>
+        <div className="w-full py-10 px-6 bg-tertiary">
+            <section className="min-h-screen bg-tertiary flex items-center">
+                <div className="max-w-7xl mx-auto px-6 text-center">
+                    <h2 className="text-5xl md:text-7xl font-extrabold text-white leading-tight">
+                        Buy. Sell. <br />
+                        <span className="text-red-600">Build.</span> Connect.
+                    </h2>
+
+                    <p className="mt-6 text-lg md:text-xl text-white max-w-2xl mx-auto">
+                        NipponAuto is the all-in-one marketplace and social
+                        network built for car enthusiasts and vehicle traders.
+                    </p>
+
+                    <div className="mt-10 flex justify-center gap-6">
+                        <button
+                            className="bg-red-600 hover:bg-red-700 text-white px-8 py-4 rounded-xl text-lg"
+                            onClick={() => router.push('/marktplace')}
+                        >
+                            Explore Marketplace
+                        </button>
+                        <button
+                            className="border border-white text-white px-8 py-4 rounded-xl text-lg"
+                            onClick={() => router.push('/community')}
+                        >
+                            Join the Community
+                        </button>
+                    </div>
+                </div>
+            </section>
         </div>
     )
 }
