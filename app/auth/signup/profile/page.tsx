@@ -1,15 +1,15 @@
 import React from 'react'
 import { Metadata } from 'next'
-import SetupProfile from './SetupProfile'
+import SignUpAdditionalDetails from './SignUpAdditionalDetails'
 
 export const metadata: Metadata = {
-    title: 'TrueMoney powered by Vashcorp | Onboarding Checklist Setup Profile',
+    title: 'NipponAuto | Sign Up - Profile',
 }
 
 export default function page() {
     return (
         <>
-            <SetupProfile />
+            <SignUpAdditionalDetails />
         </>
     )
 }

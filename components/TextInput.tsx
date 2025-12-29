@@ -1,4 +1,6 @@
-import React, { ChangeEvent, useState } from 'react'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { ChangeEvent, useEffect, useState } from 'react'
+import { useField } from 'formik'
 
 interface InputProps {
     labelText?: string
@@ -27,6 +29,49 @@ export default function TextInput({
 }: InputProps) {
     const [showPassword, setShowPassword] = useState(false)
 
+    const [countries, setCountries] = useState<any>(null)
+
+    useEffect(() => {
+        const fetchCountries = async () => {
+            try {
+                const res = await fetch(
+                    'https://restcountries.com/v3.1/all?fields=name,idd'
+                )
+                const data = await res.json()
+
+                const countries = data
+                    .filter((c: { idd: { root: any } }) => c.idd?.root)
+                    .map(
+                        (c: {
+                            name: { common: any }
+                            idd: { root: any; suffixes: any[] }
+                        }) => ({
+                            name: c.name.common,
+                            dialCode: `${c.idd.root}${
+                                c.idd.suffixes?.[0] ?? ''
+                            }`,
+                        })
+                    )
+                    .sort((a: { name: string }, b: { name: any }) =>
+                        a.name.localeCompare(b.name)
+                    )
+                console.log(countries)
+                setCountries(countries)
+            } catch (err) {
+                console.error('Failed to load countries', err)
+            }
+        }
+
+        if (variant === 'contactNumber') {
+            fetchCountries()
+        }
+    }, [variant])
+
+    const [field, , helpers] = useField<string>(name)
+    const [countryCode, setCountryCode] = useState('+63')
+
+    const localNumber = field.value?.replace(countryCode, '') || ''
+
     return (
         <div className="flex-col mb-[20px]">
             <label
@@ -36,9 +81,9 @@ export default function TextInput({
                 {labelText}
             </label>
             <div
-                className={`w-full border-2 ${
+                className={`w-full border-2 p-4 rounded-[10px] bg-white-50 flex ${
                     variant === 'footer' ? 'border-white' : 'border-tertiary'
-                } p-4 bg-white-50 rounded-[10px] flex`}
+                } ${variant === 'contactNumber' ? 'flex-col' : 'flex-row'}`}
             >
                 {variant === 'paragraph' ? (
                     <textarea
@@ -51,17 +96,32 @@ export default function TextInput({
                     ></textarea>
                 ) : variant === 'contactNumber' ? (
                     <>
-                        <span className="flex items-center px-2 text-black border-r border-tertiary">
-                            +63
-                        </span>
+                        <select
+                            value={countryCode}
+                            onChange={(e) => setCountryCode(e.target.value)}
+                            className="px-2 bg-transparent text-black outline-none"
+                        >
+                            {countries &&
+                                countries.map((c: any) => (
+                                    <option key={c.dialCode} value={c.dialCode}>
+                                        {c.name} {c.dialCode}
+                                    </option>
+                                ))}
+                        </select>
+                        <div className="border border-tertiary my-[10px]" />
                         <input
-                            type="text"
+                            {...field}
                             id={id}
-                            name={name}
-                            value={value}
+                            type="text"
+                            value={localNumber}
                             placeholder={placeholderText}
-                            maxLength={10}
-                            onChange={onChangeInput}
+                            onChange={(e) => {
+                                const digitsOnly = e.target.value.replace(
+                                    /\D/g,
+                                    ''
+                                )
+                                helpers.setValue(`${countryCode}${digitsOnly}`)
+                            }}
                             className={`w-full bg-transparent outline-none text-black ${
                                 variant === 'contactNumber' ? 'pl-2' : ''
                             }`}

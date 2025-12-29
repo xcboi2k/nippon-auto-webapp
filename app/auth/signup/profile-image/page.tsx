@@ -1,15 +1,15 @@
 import React from 'react'
 import { Metadata } from 'next'
-import Checklist from './Checklist'
+import SignUpProfileImage from './SignUpProfileImage'
 
 export const metadata: Metadata = {
-    title: '4Vale | Onboarding Checklist',
+    title: 'NipponAuto | Sign Up - Profile Image',
 }
 
 export default function page() {
     return (
         <>
-            <Checklist />
+            <SignUpProfileImage />
         </>
     )
 }

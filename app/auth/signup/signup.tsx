@@ -20,10 +20,8 @@ import useUserStore from '@/stores/useUserStore'
 
 interface FormData {
     firstName: string
-    middleName: string
     lastName: string
-    nameExtension: string
-    contactNumber: string
+    userName: string
     email: string
     password: string
     confirmPassword: string
@@ -35,10 +33,8 @@ export default function SignUp() {
 
     const initialValues: FormData = {
         firstName: '',
-        middleName: '',
         lastName: '',
-        nameExtension: '',
-        contactNumber: '',
+        userName: '',
         email: '',
         password: '',
         confirmPassword: '',
@@ -118,12 +114,8 @@ export default function SignUp() {
 
     const validationSchema = Yup.object().shape({
         firstName: Yup.string().required('First name is required'),
-        middleName: Yup.string().required('Middle name is required'),
         lastName: Yup.string().required('Last name is required'),
-        contactNumber: Yup.string()
-            .length(10, 'Contact number must be exactly 10 digits')
-            .matches(/^[0-9]+$/, 'Contact number must be digits only') // Optional: Ensure only digits
-            .required('Contact number is required'),
+        userName: Yup.string().required('User name is required'),
         email: Yup.string()
             .email('Invalid email format')
             .required('Email is required'),
@@ -194,19 +186,7 @@ export default function SignUp() {
                                             : undefined
                                     }
                                 />
-                                <TextInput
-                                    labelText="Middle Name"
-                                    placeholderText="Enter your middle name"
-                                    id="middleName"
-                                    name="middleName"
-                                    value={values.middleName}
-                                    onChangeInput={handleChange}
-                                    errorMessage={
-                                        touched.middleName && errors.middleName
-                                            ? errors.middleName
-                                            : undefined
-                                    }
-                                />
+
                                 <TextInput
                                     labelText="Last Name"
                                     placeholderText="Enter your last name"
@@ -217,6 +197,19 @@ export default function SignUp() {
                                     errorMessage={
                                         touched.lastName && errors.lastName
                                             ? errors.lastName
+                                            : undefined
+                                    }
+                                />
+                                <TextInput
+                                    labelText="Username"
+                                    placeholderText="Enter your username"
+                                    id="userName"
+                                    name="userName"
+                                    value={values.userName}
+                                    onChangeInput={handleChange}
+                                    errorMessage={
+                                        touched.userName && errors.userName
+                                            ? errors.userName
                                             : undefined
                                     }
                                 />
@@ -233,21 +226,7 @@ export default function SignUp() {
                                             : undefined
                                     }
                                 />
-                                <TextInput
-                                    labelText="Mobile Number"
-                                    placeholderText="Enter mobile number"
-                                    variant="contactNumber"
-                                    id="contactNumber"
-                                    name="contactNumber"
-                                    value={values.contactNumber}
-                                    onChangeInput={handleChange}
-                                    errorMessage={
-                                        touched.contactNumber &&
-                                        errors.contactNumber
-                                            ? errors.contactNumber
-                                            : undefined
-                                    }
-                                />
+
                                 <TextInput
                                     labelText="Password"
                                     placeholderText="Enter password"
