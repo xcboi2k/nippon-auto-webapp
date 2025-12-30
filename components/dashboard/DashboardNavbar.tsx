@@ -7,7 +7,7 @@ import Link from 'next/link'
 import {
     FaUser,
     FaLock,
-    FaMobileAlt,
+    FaListAlt,
     FaFileAlt,
     FaCreditCard,
     FaSignOutAlt,
@@ -19,7 +19,9 @@ import {
     FaReceipt,
     FaQuestionCircle,
     FaCog,
+    FaStar,
 } from 'react-icons/fa'
+import { MdFeed } from 'react-icons/md'
 import { AiOutlineLoading } from 'react-icons/ai'
 import { toast } from 'react-toastify'
 
@@ -56,40 +58,45 @@ export default function DashboardNavbar({
             path: '/dashboard',
         },
         {
-            label: 'Transaction History',
-            icon: <FaReceipt />,
-            path: '/dashboard/transactions',
-        },
-        {
             label: 'My Profile',
             icon: <FaUser />,
-            path: '/dashboard/account/details',
+            path: '/dashboard/account/profile',
         },
         {
-            label: 'My Bank Account',
-            icon: <FaCreditCard />,
-            path: '/dashboard/account/bank-account',
+            label: 'My Posts',
+            icon: <FaListAlt />,
+            path: '/dashboard/account/posts',
         },
         {
-            label: 'Notifications',
-            icon: <FaBell />,
-            path: '/dashboard/account/notifications',
+            label: 'My Listings',
+            icon: <FaReceipt />,
+            path: '/dashboard/account/listings',
         },
         {
-            label: 'FAQs',
-            icon: <FaQuestionCircle />,
-            path: '/dashboard/account/faqs',
+            label: 'My Reviews',
+            icon: <FaStar />,
+            path: '/dashboard/account/reviews',
         },
+        // {
+        //     label: 'Notifications',
+        //     icon: <FaBell />,
+        //     path: '/dashboard/account/notifications',
+        // },
+        // {
+        //     label: 'FAQs',
+        //     icon: <FaQuestionCircle />,
+        //     path: '/dashboard/account/faqs',
+        // },
         {
             label: 'Change Password',
             icon: <FaLock />,
             path: '/dashboard/account/password',
         },
-        {
-            label: 'Authentication Settings',
-            icon: <FaCog />,
-            path: '/dashboard/account/authentication-settings',
-        },
+        // {
+        //     label: 'Authentication Settings',
+        //     icon: <FaCog />,
+        //     path: '/dashboard/account/authentication-settings',
+        // },
     ]
 
     // const policyLinks = [
