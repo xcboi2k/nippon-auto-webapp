@@ -146,7 +146,7 @@ export default function TextInput({
                             {showPassword ? 'Hide' : 'Show'}
                         </button>
                     </div>
-                ) : variant === 'zip-code' ? (
+                ) : variant === 'number' ? (
                     <input
                         type="text"
                         inputMode="numeric"
@@ -155,7 +155,7 @@ export default function TextInput({
                         name={name}
                         value={value}
                         placeholder={placeholderText}
-                        maxLength={4}
+                        // maxLength={4}
                         onChange={(e) => {
                             // Only allow numeric characters
                             const numericValue = e.target.value.replace(
