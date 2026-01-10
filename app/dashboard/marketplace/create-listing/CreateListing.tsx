@@ -15,6 +15,7 @@ import Loader from '@/components/Loader'
 
 import useLoaderStore from '@/stores/useLoaderStore'
 import useUserStore from '@/stores/useUserStore'
+import ListingDropdown from '@/components/dashboard/listings/ListingDropdown'
 
 interface FormData {
     vehicleModel: string
@@ -29,6 +30,25 @@ export default function CreateListing() {
 
     const { showLoader, hideLoader } = useLoaderStore()
 
+    const transmissionItems = [
+        { label: 'Manual', value: 'manual' },
+        { label: 'Automatic', value: 'automatic' },
+        { label: 'Sequential', value: 'sequential' },
+        { label: 'CVT', value: 'cvt' },
+    ]
+    const [selectedTransmission, setSelectedTransmission] = useState<string>(
+        transmissionItems[0].value
+    )
+
+    const classificationItems = [
+        { label: 'Car', value: 'car' },
+        { label: 'Van', value: 'van' },
+        { label: 'Truck/Bus', value: 'truck_bus' },
+        { label: 'Motorcycle', value: 'motorcycle' },
+    ]
+    const [selectedClassification, setSelectedClassification] =
+        useState<string>(classificationItems[0].value)
+
     const initialValues: FormData = {
         vehicleModel: '',
         price: '',
@@ -41,6 +61,15 @@ export default function CreateListing() {
 
     const setUser = useUserStore((state) => state.setUser)
     const setUserToken = useUserStore((state) => state.setUserToken)
+
+    const [errorMessages, setErrorMessages] = useState<{
+        transmission: string | undefined
+        classification: string | undefined
+    }>({
+        transmission: undefined,
+        classification: undefined,
+    })
+
     const handleSubmit = async (
         values: typeof initialValues,
         {
@@ -48,6 +77,24 @@ export default function CreateListing() {
         }: { resetForm: (nextState?: { values?: FormData }) => void }
     ) => {
         console.log('create listing inputs:', values)
+        if (!selectedTransmission || !selectedClassification) {
+            if (!selectedTransmission) {
+                toast.error('Please select a transmission')
+                setErrorMessages({
+                    ...errorMessages,
+                    transmission: 'Please select a transmission',
+                })
+                return
+            }
+            if (!selectedClassification) {
+                toast.error('Please select a classification')
+                setErrorMessages({
+                    ...errorMessages,
+                    classification: 'Please select a classification',
+                })
+                return
+            }
+        }
         // showLoader()
         // if (checkedTerms) {
         //     try {
@@ -207,6 +254,35 @@ export default function CreateListing() {
                                         touched.kilometers && errors.kilometers
                                             ? errors.kilometers
                                             : undefined
+                                    }
+                                />
+                                <ListingDropdown
+                                    labelText="Transmission"
+                                    name="transmission"
+                                    data={transmissionItems}
+                                    errorMessage={
+                                        errorMessages.transmission
+                                            ? errorMessages.transmission
+                                            : undefined
+                                    }
+                                    editable={true}
+                                    variant="create"
+                                    onChange={(value) =>
+                                        setSelectedTransmission(value)
+                                    }
+                                />
+                                <ListingDropdown
+                                    labelText="Classification"
+                                    name="classification"
+                                    data={classificationItems}
+                                    errorMessage={
+                                        errorMessages.classification
+                                            ? errorMessages.classification
+                                            : undefined
+                                    }
+                                    variant="create"
+                                    onChange={(value) =>
+                                        setSelectedClassification(value)
                                     }
                                 />
                                 <ImageUpload
