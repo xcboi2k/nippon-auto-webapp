@@ -90,7 +90,7 @@ export default function DashboardNavbar({
         {
             label: 'Change Password',
             icon: <FaLock />,
-            path: '/dashboard/account/password',
+            path: '/dashboard/settings/change-password',
         },
         // {
         //     label: 'Authentication Settings',
