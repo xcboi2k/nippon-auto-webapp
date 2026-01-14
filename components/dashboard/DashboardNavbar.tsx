@@ -99,18 +99,18 @@ export default function DashboardNavbar({
         // },
     ]
 
-    // const policyLinks = [
-    //     {
-    //         label: 'Terms & Conditions',
-    //         icon: <FaBook />,
-    //         path: '/terms-conditions?from=dashboard',
-    //     },
-    //     {
-    //         label: 'Privacy Policy',
-    //         icon: <FaShieldAlt />,
-    //         path: '/privacy-policy?from=dashboard',
-    //     },
-    // ]
+    const policyLinks = [
+        {
+            label: 'Terms & Conditions',
+            icon: <FaBook />,
+            path: '/terms-conditions?from=dashboard',
+        },
+        {
+            label: 'Privacy Policy',
+            icon: <FaShieldAlt />,
+            path: '/privacy-policy?from=dashboard',
+        },
+    ]
 
     const setLoggedOut = useUserStore((state) => state.setLoggedOut)
     const clearUser = useUserStore((state) => state.clearUser)
@@ -183,9 +183,9 @@ export default function DashboardNavbar({
             </nav>
 
             <div
-                className={`fixed top-0 right-0 h-full w-80 bg-white shadow-2xl z-50 transform ${
+                className={`fixed top-0 right-0 h-screen w-80 bg-white shadow-2xl z-50 transform ${
                     isSidebarOpen ? 'translate-x-0' : 'translate-x-full'
-                } transition-transform duration-300 ease-in-out`}
+                } transition-transform duration-300 ease-in-out flex flex-col`}
             >
                 {/* Header */}
                 <div className="bg-tertiary p-6 flex flex-col items-center text-center border-b">
@@ -216,7 +216,7 @@ export default function DashboardNavbar({
                 </div>
 
                 {/* Menu */}
-                <div className="flex flex-col py-4">
+                <div className="flex flex-col py-4 flex-1 overflow-y-auto">
                     {menuItems.map((item, index) => (
                         <button
                             key={index}
@@ -233,7 +233,7 @@ export default function DashboardNavbar({
                         </button>
                     ))}
 
-                    {/* <hr className="my-4 border-tertiary" />
+                    <hr className="my-4 border-tertiary" />
 
                     {policyLinks.map((item, index) => (
                         <button
@@ -242,18 +242,18 @@ export default function DashboardNavbar({
                                 router.push(item.path)
                                 setIsSidebarOpen(false)
                             }}
-                            className="flex items-center gap-4 px-6 py-3 text-primary hover:bg-gray-100 transition-all"
+                            className="flex items-center gap-4 px-6 py-3 text-tertiary cursor-pointer"
                         >
-                            <span className="text-lg text-primary">
+                            <span className="text-lg text-tertiary">
                                 {item.icon}
                             </span>
-                            <span className="text-[15px] font-medium text-primary">
+                            <span className="text-[15px] font-medium text-tertiary">
                                 {item.label}
                             </span>
                         </button>
                     ))}
 
-                    <hr className="my-4 border-tertiary" /> */}
+                    <hr className="my-4 border-tertiary" />
 
                     <button
                         onClick={handleLogout}
