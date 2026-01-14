@@ -20,7 +20,7 @@ export default function Profile() {
                     <div className="w-full flex justify-between items-center mb-6">
                         <button
                             className="mb-[30px] flex items-center cursor-pointer"
-                            onClick={() => router.push('/dashboard')}
+                            onClick={() => router.push('/dashboard/feed')}
                         >
                             <ArrowLeft size={15} color={colors.tertiary} />
                             <h2 className="text-sm md:text-md font-semibold text-tertiary ml-[10px]">
@@ -34,13 +34,21 @@ export default function Profile() {
 
                     {/* Avatar + Stats */}
                     <div className="w-full flex items-center mb-6 gap-4">
-                        <img
-                            src={
-                                'https://randomuser.me/api/portraits/men/10.jpg'
+                        <button
+                            onClick={() =>
+                                router.push(
+                                    `/dashboard/account/profile/update-profile-image`
+                                )
                             }
-                            alt="John Doe"
-                            className="w-20 h-20 rounded-full object-cover"
-                        />
+                        >
+                            <img
+                                src={
+                                    'https://randomuser.me/api/portraits/men/10.jpg'
+                                }
+                                alt="John Doe"
+                                className="w-20 h-20 rounded-full object-cover"
+                            />
+                        </button>
 
                         <div className="flex flex-1 justify-around text-center">
                             <div>
@@ -93,6 +101,16 @@ export default function Profile() {
                             <MdPhone size={16} className="text-[#153A56]" />
                             <span className="ml-2">1234 - 5678 - 0000</span>
                         </div>
+                    </div>
+                    <div className="flex flex-col gap-3 mb-6">
+                        <button
+                            className="w-[20%] bg-[#234791] py-3 rounded-xl text-white font-medium hover:bg-[#1d3a75] transition"
+                            onClick={() =>
+                                router.push(`/dashboard/account/profile/update`)
+                            }
+                        >
+                            Update
+                        </button>
                     </div>
 
                     {/* About */}

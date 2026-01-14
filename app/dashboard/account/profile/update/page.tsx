@@ -1,16 +1,16 @@
 import React from 'react'
 import { Metadata } from 'next'
-import Profile from './Profile'
+import UpdateProfile from './UpdateProfile'
 
 export const metadata: Metadata = {
-    title: 'NipponAuto | Account Profile',
-    description: 'Account Profile',
+    title: 'NipponAuto | Account Profile - Update',
+    description: 'Account Profile Update',
 }
 
 export default function page() {
     return (
         <>
-            <Profile />
+            <UpdateProfile />
         </>
     )
 }
