@@ -9,7 +9,7 @@ export default function Feed() {
             userImage: 'https://randomuser.me/api/portraits/men/10.jpg',
             content: 'Check out my new ride! Loving the performance.',
             postImage:
-                'https://images.unsplash.com/photo-1605296867304-46d5465a13f1?w=800&q=80',
+                'https://images.unsplash.com/photo-1484136063621-1acbc3b4ec98?q=80&w=1353&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             likes: 12,
             comments: 4,
         },
@@ -18,7 +18,7 @@ export default function Feed() {
             userImage: 'https://randomuser.me/api/portraits/women/12.jpg',
             content: 'Weekend ride with friends! 🏍️',
             postImage:
-                'https://images.unsplash.com/photo-1617559916160-55d3d271648b?w=800&q=80',
+                'https://images.unsplash.com/photo-1608341089966-92c09e62214f?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             likes: 34,
             comments: 10,
         },
@@ -27,7 +27,7 @@ export default function Feed() {
             userImage: 'https://randomuser.me/api/portraits/women/21.jpg',
             content: 'Just customized my bike, check the new colors!',
             postImage:
-                'https://images.unsplash.com/photo-1605809602440-fc15d33a540b?w=800&q=80',
+                'https://images.unsplash.com/photo-1723121248039-9ff477b0ea8b?q=80&w=1193&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             likes: 18,
             comments: 5,
         },

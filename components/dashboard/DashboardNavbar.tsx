@@ -144,17 +144,19 @@ export default function DashboardNavbar({
                                 alt="Logo"
                                 width={100}
                                 height={40}
-                                className="w-[100px] h-auto mr-[50px]"
+                                className="w-[80px] h-auto mr-[50px]"
                             />
                         </button>
 
                         {/* Show only on medium screens and up */}
-                        {/* <div className="hidden laptop:flex space-x-6 font-medium text-white">
-                            <Link href="/dashboard">Dashboard</Link>
-                            <Link href="/dashboard/transactions">Loans</Link>
+                        <div className="hidden laptop:flex space-x-6 font-medium text-tertiary">
+                            <Link href="/dashboard/feed">Feed</Link>
+                            <Link href="/dashboard/marketplace">
+                                Marketplace
+                            </Link>
                         </div>
 
-                        <div className="flex laptop:hidden">
+                        {/* <div className="flex laptop:hidden">
                             <MobileNavButton />
                         </div> */}
                     </div>
@@ -172,11 +174,7 @@ export default function DashboardNavbar({
                             onClick={toggleSidebar}
                             className="flex items-center bg-tertiary px-4 py-2 rounded-md"
                         >
-                            Hi,{' '}
-                            {user?.first_name !== ''
-                                ? user?.first_name
-                                : 'User'}
-                            !
+                            Hi, {user !== null ? user?.first_name : 'User'}!
                         </button>
                     </div>
                 </div>

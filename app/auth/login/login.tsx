@@ -241,10 +241,6 @@ export default function Login() {
                     <h2 className="text-[40px] font-bold text-tertiary text-center mb-6">
                         Welcome Back!
                     </h2>
-                    <p className="text-[18px] text-black text-center mb-6">
-                        Enter your TrueMoney powered by Vashcorp credentials to
-                        access your earnings.
-                    </p>
 
                     <Formik
                         initialValues={initialValues}

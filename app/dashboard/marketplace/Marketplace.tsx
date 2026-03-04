@@ -19,7 +19,7 @@ export default function Marketplace() {
             car_model: 'Toyota Camry 2022',
             classification_type: 'Car',
             carImageAddress:
-                'https://images.unsplash.com/photo-1603780033344-7d3ee8f06d4f?w=800&q=80',
+                'https://images.unsplash.com/photo-1657872737697-737a2d123ef2?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             userImageAddress: 'https://randomuser.me/api/portraits/men/10.jpg',
             price: '₱1,200,000',
         },
@@ -40,7 +40,7 @@ export default function Marketplace() {
             car_model: 'Ford F-150 2020',
             classification_type: 'Truck/Bus',
             carImageAddress:
-                'https://images.unsplash.com/photo-1612840907842-c1a5f6ed9b9a?w=800&q=80',
+                'https://images.unsplash.com/photo-1551830820-330a71b99659?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9yZCUyMGYxNTB8ZW58MHx8MHx8fDA%3D',
             userImageAddress:
                 'https://randomuser.me/api/portraits/women/21.jpg',
             price: '₱2,200,000',
