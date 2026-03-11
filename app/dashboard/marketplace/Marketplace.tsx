@@ -29,7 +29,7 @@ export default function Marketplace() {
             car_model: 'Honda Odyssey 2021',
             classification_type: 'Van',
             carImageAddress:
-                'https://images.unsplash.com/photo-1610585153975-ade947932f87?w=800&q=80',
+                'https://images.unsplash.com/photo-1621695644555-5fe0f2f87939?q=80&w=1074&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D',
             userImageAddress:
                 'https://randomuser.me/api/portraits/women/12.jpg',
             price: '₱1,500,000',
